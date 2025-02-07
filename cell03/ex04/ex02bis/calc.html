@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>Document</title>
+    </head>
+    <body>
+        <script>
+                $(document).ready(function() {
+                function calculate() {
+                var num1 = parseFloat($("#num1").val());
+                var num2 = parseFloat($("#num2").val());
+                if ((num1 < 0 || num2 < 0) || isNaN(num1) || isNaN(num2) || (num1 % 1 != 0 || num2 % 1 != 0)) {
+                    alert("Error :(");
+                    return;
+                }
+                var operator = $("#operator").val();
+                if ((operator == "%" || operator == "/") && num2 == 0) {
+                    console.log("It's over 9000!");
+                    alert("It's over 9000!");
+                    return;
+                }
+                var result = 0;
+                if (operator == "+") {
+                    result = parseInt(num1) + parseInt(num2);
+                } else if (operator == "-") {
+                    result = parseInt(num1) - parseInt(num2);
+                } else if (operator == "*") {
+                    result = parseInt(num1) * parseInt(num2);
+                } else if (operator == "/") {
+                    result = parseInt(num1) / parseInt(num2);
+                } else if (operator == "%") {
+                    result = parseInt(num1) % parseInt(num2);
+                }
+                console.log(result);
+                alert("Result: " + result);
+            }
+
+            $("#calculateButton").click(calculate);
+
+            setInterval(function() {
+                alert("Please, use me...");
+            }, 30000);
+        });
+        </script>
+        <div class="container-fluid">
+        <div class="container">
+            <h1>Calculator</h1>
+            <form onsubmit="calculate()">
+            <input type="text" id="num1"/>
+            <select id="operator">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+                <option value="%">%</option>
+            </select>
+            <input type="text" id="num2"/>
+            <input type="submit" value="Try me!" />
+            </form>
+        </div>
+        </div>
+    </body>
+</html>
